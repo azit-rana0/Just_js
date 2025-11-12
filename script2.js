@@ -29,7 +29,7 @@ for (let i = 1; i <= 10; i++) {
 
 // 6 - ask user for a number and say if its  positive or negative  use prompt() and a condition
 let userNumber = prompt("Enter Numbrer?")
-if (userNumber === null || userNumber === "") {
+if (userNumber === null || userNumber.trim() === "") {
     console.log("Please enter a number");
 } else {
     userNumber = Number(userNumber)
