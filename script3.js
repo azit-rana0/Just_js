@@ -1,22 +1,22 @@
 // 1.Create a function that prints "Hello Javascript".
-// function func() {
-//     console.log(`Hello World`);
-// }
-// func();
+function func() {
+    console.log(`Hello World`);
+}
+func();
 
 // 2. Create a function that takes two numbers as parameters and returns their sum.
-// let sum = function(a, b) {
-//     return a + b;
-// }
-// let totalSum = sum(4,6);
-// console.log(totalSum);
+let sum = function(a, b) {
+    return a + b;
+}
+let totalSum = sum(4,6);
+console.log(totalSum);
 
 // 3. Make a function with a default parameter that prints "Hi" followed by the name passed to it. If no name is passed, it should print "Hi Guest".
-// let guest = function (name = "Guest") {
-//     console.log(`Hi ${name}`)
-// }
-// guest()
-// guest("Rana")
+let guest = function (name = "Guest") {
+    console.log(`Hi ${name}`)
+}
+guest()
+guest("Rana")
 
 // 4. Use rest parameters to make a function that adds unlimited numbers.
 function rest(...rest) {
