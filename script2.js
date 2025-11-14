@@ -68,14 +68,14 @@ for (let i = 1; i <= 10; i++) {
 
 // 9. Count how many numbers between 1 and 15 are greater than 8
 // Loop and count conditionally.
-let count = 0;
+let countGreater = 0;
 for (let i = 1; i <= 15; i++) {
     if (i > 8) {
-        count++
+        countGreater++
         console.log(i)
     }
 }
-console.log(count)
+console.log(countGreater)
 
 // 10. Ask user for password and print access status
 // Hardcoded correct password. Compare with user input.
@@ -171,12 +171,67 @@ while (true) {
 // 16. Print numbers between two user inputs
 // Input start and end using prompt() → print all between.
 
+function between() {
+    let start = prompt("Enter start number?");
+    if (start === null || start.trim() === '') {
+        console.log("start number to enter kr bhai...");
+        return;
+    }
+    let end = prompt("Enter end number?");
+    if (end === null || end.trim() === '') {
+        console.log("end number to enter kr bhai...");
+        return;
+    }
+    start = Number(start);
+    end = Number(end);
+    if (isNaN(start) && isNaN(end)) {
+        console.log("bhai sting type ke kr raha hai...");
+        return;
+    }
+
+    for (let i = start; i <= end; i++) {
+        console.log(i);
+    }
+}
+
+between();
+
 
 // 17. Print only first 3 odd numbers from 1 to 20
 // Use loop. Stop with break after 3 odd prints.
+let countOdd = 0;
+for (let i = 1; i <= 20; i++) {
+    if (i % 2 !== 0) {
+        console.log(i)
+        countOdd++;
+    } else if (countOdd === 3) {
+        break;
+    }
+}
 
 // 18. Ask user 5 numbers. Count how many are positive
 // Use loop + condition + counter.
+let user = 0
+let countPositive = 0;
+while (user < 5) {
+    let userNum = prompt("enter number bhai...")
+    if (userNum === null || userNum === "") {
+        console.log("number to enter kr bhai...");
+        continue;
+    }
+    userNum = Number(userNum);
+    if (isNaN(userNum)) {
+        console.log("number to enter kr bhai...");
+        continue;
+    } else if (userNum > 0) {
+        countPositive++;
+    }
+    user++;
+}
+if (user === 5) {
+    console.log(`bhai 5 attempts ho gaya hai...`)
+}
+console.log(`total ${countPositive} +ve numbers`)
 
 // 19. ATM Simulator – Allow 3 withdrawals
 // Start with ₹1000 balance. Ask withdrawal amount 3 times.
