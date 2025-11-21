@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 28, 28, 0.796);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        width: 500px;
+        height: 280px;
+        background-color: white;
+        border-radius: 1rem;
+        padding: 2rem;
+
+        p {
+            font-family: monospace;
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
+
+            span {
+                color: blue;
+            }
+        }
+
+        .outer {
+            width: 100%;
+            height: 2rem;
+            background: rgb(200, 200, 200);
+            border-radius: 50px;
+            margin-bottom: 0.9rem;
+            overflow: hidden;
+
+            .inner {
+                height: 100%;
+                width: 0%;
+                background-color: green;
+                border-radius: 50px;
+            }
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                font-family: monospace;
+                font-weight: 100;
+                font-size: 4rem;
+            }
+
+            button {
+                background-color: rgb(2, 141, 2);
+                color: white;
+                padding: 8px 20px;
+                font-size: 1.3rem;
+                font-weight: 500;
+                border-radius: 0.2rem;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                position: relative;
+                z-index: 9;
+                transition: all 0.1s ease;
+
+                &:hover {
+                    background-color: rgb(1, 124, 1);
+                }
+
+                &:active {
+                    scale: 0.95;
+                }
+            }
+        }
+    }
+}
