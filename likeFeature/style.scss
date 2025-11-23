@@ -40,11 +40,10 @@ main {
         }
 
         i {
-            // background-image:linear-gradient(red, green) ;
-            background-color: #8a3ab9;
+            background-color: red;
             color: transparent;
             -webkit-background-clip: text;
-            // color: white;
+            background-clip: text;
             opacity: 0;
             position: absolute;
             top: 50%;

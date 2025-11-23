@@ -39,9 +39,10 @@ main .container h1 {
   font-size: 2.4rem;
 }
 main .container i {
-  background-color: #8a3ab9;
+  background-color: red;
   color: transparent;
   -webkit-background-clip: text;
+  background-clip: text;
   opacity: 0;
   position: absolute;
   top: 50%;
