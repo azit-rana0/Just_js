@@ -1,7 +1,7 @@
 let image = document.querySelector("img");
 let love = document.querySelector("#love");
 
-image.addEventListener("click", () => {
+image.addEventListener("dblclick", () => {
     love.style.transform = `translate(-50%, -50%) scale(1)`; 
     love.style.opacity = 1;
 

@@ -35,11 +35,14 @@ main .container img {
   margin-bottom: 0.4rem;
 }
 main .container h1 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   text-align: center;
   font-size: 2.4rem;
 }
 main .container i {
-  background-color: red;
+  background-image: linear-gradient(to bottom, rgb(255, 0, 43), #ff0099);
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
