@@ -26,6 +26,11 @@ function rest(...rest) {
 
 rest(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 // 5. Create an IIFE that prints "I run instantly!".
+
+(function() {
+    console.log("I run instantly!");
+})();
+
 // 6. Make a nested function where the inner one prints a variable from the outer one.
 // 7. Create an array of 5 fruits. Add a fruit to the end and another to the beginning.
 // 8. Use a for loop to print all elements of an array.
