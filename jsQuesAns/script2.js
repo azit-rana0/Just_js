@@ -271,3 +271,34 @@
 // Start with ₹1000 balance. Ask withdrawal amount 3 times.
 // If enough balance → deduct
 // Else → print “Insufficient balance”
+
+// 20. Write a JavaScript function that checks whether a given ISBN number is valid or not.
+// If the ISBN has 10 digits, check it using the ISBN-10 rule.
+// If the ISBN has 13 digits, check it using the ISBN-13 rule.
+// If the length is not 10 or 13, print an error message.
+
+// function checkISBN(num) {
+//     if (num.length === 10) {
+//         let sum = 0;
+//         for (let i = 0; i < 10; i++) {
+//             sum += Number(num[i]) * (10 - i);
+//         }
+
+//         return sum % 11 === 0 ? "ISBN-10 valid" : "ISBN-10 not valid";
+//     }
+
+//     else if (num.length === 13) {
+//         let sum = 0;
+//         for (let i = 0; i < 13; i++) {
+//             sum += (i % 2 == 0) ? Number(num[i]) * 1 : Number(num[i]) * 3;
+//         }
+
+//         return sum % 10 === 0 ? "ISBN-13 valid" : "ISBN-13 not valid";
+//     }
+
+//     else {
+//         return "Chaal Nikal Bhai....."
+//     }
+// }
+// console.log(checkISBN("0306406152")); // ISBN-10 valid
+// console.log(checkISBN("9780306406157"));   // ISBN-13 valid
