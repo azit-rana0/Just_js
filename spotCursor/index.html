@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2037/2037358.png" type="image/x-icon">
+    <title>just js dom piano solves...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        :root {
+            --x: 400px;
+            --y: 400px;
+        }
+
+        body {
+            background: #222;
+            position: relative;
+            cursor: none;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(150px at var(--x) var(--y), rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.86));
+        }
+
+        .box>video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            object-position: center;
+            z-index: -1;
+        }
+
+        p {
+            font-size: 2rem;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <p>⚰️</p>
+    <div class="box">
+        <video autoplay loop muted src="https://www.pexels.com/download/video/34746180/"></video>
+    </div>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
