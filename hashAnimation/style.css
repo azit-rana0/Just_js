@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderAnimate {
+    from {
+        --rotate: 0deg;
+    }
+
+    to {
+        --rotate: 360deg;
+    }
+}
+
+.box {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 18px;
+    padding: 0.8rem;
+    box-shadow: 0 0 0px rgb(255, 0, 195);
+    text-shadow: 0 0 0px rgb(255, 0, 123);
+    background:
+        linear-gradient(rgb(0, 0, 0)) padding-box,
+        conic-gradient(from var(--rotate), black, rgb(255, 0, 123), black, black) border-box;
+    border: 0.1px solid rgb(112, 112, 112);
+    animation: borderAnimate 5s infinite;
+    animation-play-state: paused;
+    color: rgb(201, 199, 199);
+    transition: all 0.5s linear;
+}
+
+.box:hover {
+    animation-play-state: running;
+    border-width: 5px;
+    border: 6px solid transparent;
+    box-shadow: 0 0 50px rgb(255, 0, 195);
+    text-shadow: 0 0 10px rgb(255, 0, 123);
+    color: rgb(255, 0, 123);;
+    transform: scale(1) !important;
+}
+
+body:has(.box:hover) .box {
+    transform: scale(0.8);
+}
+
+.box img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.box h1 {
+    padding-inline: 0.7rem;
+    font-size: 2.3rem;
+}
+
+.box p {
+    padding-inline: 0.7rem;
+    margin-bottom: 1rem;
+
+}
