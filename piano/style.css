@@ -16,7 +16,8 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #e3f2ed;
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  padding-inline: 10px;
 }
 body .wrapper {
   display: flex;
@@ -28,6 +29,7 @@ body .wrapper {
   background: #141414;
 }
 body .wrapper header {
+  width: 100%;
   color: #b2b2b2;
   display: flex;
   align-items: center;
@@ -35,26 +37,35 @@ body .wrapper header {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  gap: 1.2rem;
 }
 body .wrapper header h2 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
 }
-body .wrapper header .column {
+body .wrapper header .volume-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+body .wrapper header .volume-checkbox .column {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-body .wrapper header .column span {
+body .wrapper header .volume-checkbox .column span {
   font-weight: 500;
-  font-size: 1.19rem;
+  font-size: 1.13rem;
+  white-space: nowrap;
 }
-body .wrapper header .volume-slider input {
+body .wrapper header .volume-checkbox .volume-slider input {
+  height: 4px;
   accent-color: #fff;
   outline: none;
 }
-body .wrapper header .keys-checkbox input {
-  width: 60px;
-  height: 30px;
+body .wrapper header .volume-checkbox .keys-checkbox input {
+  width: 50px;
+  height: 20px;
   cursor: pointer;
   outline: none;
   position: relative;
@@ -64,21 +75,21 @@ body .wrapper header .keys-checkbox input {
   border-radius: 30px;
   background: #4b4b4b;
 }
-body .wrapper header .keys-checkbox input::before {
+body .wrapper header .volume-checkbox .keys-checkbox input::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 5px;
-  height: 20px;
-  width: 20px;
+  left: 4px;
+  height: 14px;
+  width: 14px;
   border-radius: 50%;
   background: #8c8c8c;
   transform: translateY(-50%);
   transition: all 0.3s ease;
 }
-body .wrapper header .keys-checkbox input:checked::before {
+body .wrapper header .volume-checkbox .keys-checkbox input:checked::before {
   background: #fff;
-  left: 35px;
+  left: 32px;
 }
 body .wrapper .piano-keys {
   display: flex;
@@ -141,11 +152,13 @@ body .wrapper .piano-keys .white.active {
   body .wrapper header {
     flex-direction: column;
   }
-  body .wrapper header h2,
-  body .wrapper header .column {
+  body .wrapper header .volume-checkbox .column {
     margin-bottom: 13px;
   }
-  body .wrapper header .volume-slider input {
+  body .wrapper header .volume-checkbox .column span {
+    font-size: 1rem;
+  }
+  body .wrapper header .volume-checkbox .volume-slider input {
     max-width: 100px;
   }
   body .wrapper .piano-keys {
@@ -165,10 +178,40 @@ body .wrapper .piano-keys .white.active {
   }
 }
 @media screen and (max-width: 615px) {
+  body .wrapper .volume-checkbox .column span {
+    font-size: 0.6rem;
+  }
   body .wrapper .piano-keys .key:nth-child(n+13) {
     display: none;
   }
   body .wrapper .piano-keys .white {
     width: 50px;
+  }
+}
+@media screen and (max-width: 460px) {
+  body .wrapper {
+    padding-inline: 3rem;
+    max-width: 410px;
+  }
+  body .wrapper header h2 {
+    font-size: 1.6rem;
+  }
+  body .wrapper header .volume-checkbox {
+    gap: 0;
+    flex-direction: column;
+    margin-top: px;
+  }
+  body .wrapper .piano-keys .key:nth-child(n+13) {
+    display: none;
+  }
+  body .wrapper .piano-keys .key span {
+    font-size: 0.9rem;
+  }
+  body .wrapper .piano-keys .black {
+    width: 26px;
+    margin: 0 -13px 0 -13px;
+  }
+  body .wrapper .piano-keys .white {
+    width: 34px;
   }
 }
