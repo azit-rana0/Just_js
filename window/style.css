@@ -1,0 +1,481 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://images.unsplash.com/photo-1702539336564-b37d0f3276e7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+main .menu {
+  position: absolute;
+  display: none;
+  background: rgba(37, 37, 37, 0.903);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border: 1px solid rgba(204, 204, 204, 0.1803921569);
+  color: rgba(208, 208, 208, 0.773);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  padding: 0.3rem;
+  border-radius: 0.8rem;
+}
+main .menu .logo-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  transition: background-color 0.3s ease;
+  border-radius: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+main .menu .logo-container:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .menu .logo-container .logo-name {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+main .menu .logo-container .logo-name i {
+  font-size: 1.2rem;
+}
+main .menu .logo-container .logo-name p {
+  font-size: 0.8rem;
+}
+main .menu .logo-container i {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+main .menu .new,
+main .menu .terminal {
+  border-block: 1px solid rgba(255, 255, 255, 0.166);
+}
+main .window-app {
+  color: rgba(233, 231, 231, 0.844);
+  display: grid;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows: repeat(8, 120px);
+  padding: 1rem 0.5rem;
+}
+main .window-app .app {
+  justify-self: center;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+main .window-app .app:hover {
+  background-color: rgba(255, 255, 255, 0.1490196078);
+}
+main .window-app .app .icon {
+  width: 45px;
+}
+main .window-app .app .icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .window-app .app p {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0.75rem;
+}
+main .window {
+  padding: 2rem;
+  position: fixed;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 90%;
+  background: rgba(40, 40, 40, 0.812);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  color: rgb(245, 245, 245);
+  border-radius: 12px;
+  transition: bottom 0.4s ease;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+main .window.active {
+  bottom: 3.5rem;
+}
+main .window .search {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.108);
+  height: 32px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: rgb(29, 29, 29);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+main .window .search i {
+  display: inline-block;
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding-left: 1rem;
+  color: rgba(82, 195, 201, 0.745);
+  font-weight: 600;
+}
+main .window .search input {
+  padding-left: 0.8rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 100%;
+  flex-grow: 1;
+  width: 100%;
+  color: rgb(234, 232, 232);
+  font-size: 0.9rem;
+}
+main .window .search input::-moz-placeholder {
+  color: rgba(190, 184, 184, 0.802);
+}
+main .window .search input::placeholder {
+  color: rgba(190, 184, 184, 0.802);
+}
+main .window .pinned {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+}
+main .window .pinned .pinned-all {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+main .window .pinned .pinned-all p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: default;
+}
+main .window .pinned .pinned-all div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: rgba(54, 54, 54, 0.812);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.3rem;
+}
+main .window .pinned .pinned-all div p {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+main .window .pinned .pinned-all div i {
+  font-weight: 100;
+}
+main .window .pinned .pinned-app {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(38px, 1fr));
+  align-items: center;
+  gap: 1rem;
+  cursor: default;
+}
+main .window .pinned .pinned-app .app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 0.8rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+main .window .pinned .pinned-app .app:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .window .pinned .pinned-app .app .icon {
+  width: 38px;
+}
+main .window .pinned .pinned-app .app .icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .window .pinned .pinned-app .app p {
+  font-size: 0.75rem;
+}
+main .window .recommended {
+  cursor: default;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+main .window .recommended .recommended-more {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+main .window .recommended .recommended-more p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: default;
+}
+main .window .recommended .recommended-more div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: rgba(54, 54, 54, 0.812);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+}
+main .window .recommended .recommended-more div p {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+main .window .recommended .recommended-more div i {
+  font-weight: 100;
+}
+main .window .recommended .recommended-files {
+  padding-inline: 1rem;
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  transition: background-color 0.3s ease;
+}
+main .window .recommended .recommended-files .files {
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+main .window .recommended .recommended-files .files .icon {
+  width: 40px;
+}
+main .window .recommended .recommended-files .files .icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .window .recommended .recommended-files .files .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+}
+main .window .recommended .recommended-files .files:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .window .window-screen-bottom {
+  cursor: default;
+  background: rgba(40, 40, 40, 0.848);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  padding-inline: 4rem;
+  justify-content: space-between;
+  align-items: center;
+}
+main .window .window-screen-bottom .name-profile {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.8rem;
+  transition: background-color 0.3s ease;
+}
+main .window .window-screen-bottom .name-profile:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .window .window-screen-bottom .name-profile .profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+main .window .window-screen-bottom .name-profile .profile img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .window .window-screen-bottom .name-profile p {
+  font-size: 0.8rem;
+}
+main .window .window-screen-bottom .power {
+  border-radius: 0.3rem;
+  padding: 1.4rem;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+main .window .window-screen-bottom .power:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .window .window-screen-bottom .power i {
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+main .bottom {
+  background: rgba(40, 40, 40, 0.812);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 3rem;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid rgba(255, 255, 255, 0.14);
+}
+main .bottom .start,
+main .bottom .middle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+main .bottom .start .logo,
+main .bottom .start .search,
+main .bottom .start .brave,
+main .bottom .start .vs-code,
+main .bottom .start .setting,
+main .bottom .start .whether,
+main .bottom .middle .logo,
+main .bottom .middle .search,
+main .bottom .middle .brave,
+main .bottom .middle .vs-code,
+main .bottom .middle .setting,
+main .bottom .middle .whether {
+  height: 80%;
+  border-radius: 0.3rem;
+  padding: 4px;
+  transition: background-color 0.3s ease;
+}
+main .bottom .start .logo:hover,
+main .bottom .start .search:hover,
+main .bottom .start .brave:hover,
+main .bottom .start .vs-code:hover,
+main .bottom .start .setting:hover,
+main .bottom .start .whether:hover,
+main .bottom .middle .logo:hover,
+main .bottom .middle .search:hover,
+main .bottom .middle .brave:hover,
+main .bottom .middle .vs-code:hover,
+main .bottom .middle .setting:hover,
+main .bottom .middle .whether:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .bottom .start .logo img,
+main .bottom .start .search img,
+main .bottom .start .brave img,
+main .bottom .start .vs-code img,
+main .bottom .start .setting img,
+main .bottom .start .whether img,
+main .bottom .middle .logo img,
+main .bottom .middle .search img,
+main .bottom .middle .brave img,
+main .bottom .middle .vs-code img,
+main .bottom .middle .setting img,
+main .bottom .middle .whether img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .bottom .end {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  color: rgb(238, 237, 237);
+}
+main .bottom .end .arrow {
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  padding: 0.55rem 0.35rem;
+  transition: background-color 0.3s ease;
+}
+main .bottom .end .arrow:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .bottom .end .wifi-sound-battery {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.3rem;
+  padding: 0.65rem 0.5rem;
+  transition: background-color 0.3s ease;
+}
+main .bottom .end .wifi-sound-battery:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
+main .bottom .end .wifi-sound-battery .wifi,
+main .bottom .end .wifi-sound-battery .sound,
+main .bottom .end .wifi-sound-battery .battery {
+  font-size: 0.95rem;
+}
+main .bottom .end .language,
+main .bottom .end .time-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  border-radius: 0.3rem;
+  padding: 0.35rem 0.55rem;
+  transition: background-color 0.3s ease;
+}
+main .bottom .end .language:hover,
+main .bottom .end .time-date:hover {
+  background-color: rgba(255, 255, 255, 0.0745098039);
+}
