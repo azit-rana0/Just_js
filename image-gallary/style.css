@@ -75,7 +75,7 @@ main {
     color: #d0e1f8de;
 }
 
-.header form button:hover{
+.header form button:hover {
     background: #1d4f91;
 }
 
@@ -109,4 +109,79 @@ main {
     height: auto;
     object-fit: cover;
     border-radius: 1em;
+}
+
+
+/* Laptops */
+@media (max-width: 1200px) {
+    .col {
+        width: calc(100% / 4);
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .header h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header form {
+        width: 100%;
+        height: 3rem;
+    }
+
+    .col {
+        width: calc(100% / 3);
+    }
+}
+
+/* Small tablets / large mobiles */
+@media (max-width: 768px) {
+    .col {
+        width: calc(100% / 2);
+    }
+
+    .header form {
+        height: 2.6rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    main {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    .col {
+        width: 100%;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .header form {
+        height: 2.2rem;
+    }
+
+    .header form input {
+        font-size: 1rem;
+    }
+
+    .header form button {
+        font-size: 0.9rem;
+        width: 25%;
+    }
 }
