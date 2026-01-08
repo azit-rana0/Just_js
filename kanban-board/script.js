@@ -7,6 +7,10 @@ const columns = [todo, progress, done];
 
 let dragElement = null;
 
+// Edit related variables
+let editTask = null;
+let isEditMode = false;
+
 function addTask(title, desc, column) {
     const div = document.createElement("div");
 
@@ -15,22 +19,41 @@ function addTask(title, desc, column) {
 
     div.innerHTML = `
         <h2>${title}</h2>
-        <p> ${desc}</p>
-        <button><i class="ri-delete-bin-2-fill"></i></button>
-    `
+        <p>${desc}</p>
+        <div class="actions">
+            <button class="edit"><i class="ri-edit-2-fill"></i></button>
+            <button class="delete"><i class="ri-delete-bin-2-fill"></i></button>
+        </div>
+    `;
+
     column.appendChild(div);
 
-    const deleteButton = div.querySelector("button");
+    // Delete
+    const deleteButton = div.querySelector(".delete");
     deleteButton.addEventListener("click", () => {
         div.remove();
         updateTaskCount();
-    })
-
-    div.addEventListener('drag', (e) => {
-        dragElement = div;
     });
 
+    // Edit
+    const editButton = div.querySelector(".edit");
+    editButton.addEventListener("click", () => {
+        isEditMode = true;
+        editTask = div;
 
+        document.querySelector("#task-title-input").value =
+            div.querySelector("h2").innerText;
+
+        document.querySelector("#task-desc-input").value =
+            div.querySelector("p").innerText;
+
+        modal.classList.add("active");
+    });
+
+    // Drag
+    div.addEventListener("drag", () => {
+        dragElement = div;
+    });
 
     return div;
 }
@@ -40,20 +63,18 @@ function updateTaskCount() {
         const tasks = col.querySelectorAll(".task");
         const count = col.querySelector(".right");
 
-        tasksData[col.id] = Array.from(tasks).map(t => {
-            return {
-                title: t.querySelector("h2").innerText,
-                desc: t.querySelector("p").innerText
-            }
-        });
+        tasksData[col.id] = Array.from(tasks).map(t => ({
+            title: t.querySelector("h2").innerText,
+            desc: t.querySelector("p").innerText
+        }));
 
         localStorage.setItem("tasks", JSON.stringify(tasksData));
         count.innerText = tasks.length;
     });
 }
 
+// Load from LocalStorage
 if (localStorage.getItem("tasks")) {
-
     const data = JSON.parse(localStorage.getItem("tasks"));
 
     for (const col in data) {
@@ -61,20 +82,11 @@ if (localStorage.getItem("tasks")) {
         data[col].forEach(task => {
             addTask(task.title, task.desc, column);
         });
-
-        updateTaskCount();
     }
-};
+    updateTaskCount();
+}
 
-const tasks = document.querySelectorAll(".task");
-
-tasks.forEach((task) => {
-    task.addEventListener("drag", (e) => {
-        // console.log(e);
-        dragElement = task;
-    });
-});
-
+// Drag events on columns
 function addDragEventOnColumn(column) {
     column.addEventListener("dragenter", (e) => {
         e.preventDefault();
@@ -94,17 +106,15 @@ function addDragEventOnColumn(column) {
         e.preventDefault();
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
-
         updateTaskCount();
-
     });
-};
+}
 
 addDragEventOnColumn(todo);
 addDragEventOnColumn(progress);
 addDragEventOnColumn(done);
 
-// Modal releted logic
+// Modal related logic
 const toggleModalButton = document.querySelector("#toggle-modal");
 const modalBg = document.querySelector(".modal .bg");
 const modal = document.querySelector(".modal");
@@ -112,28 +122,38 @@ const addTaskButton = document.querySelector("#add-new-task");
 
 toggleModalButton.addEventListener("click", () => {
     modal.classList.toggle("active");
+    isEditMode = false;
+    editTask = null;
 });
 
 modalBg.addEventListener("click", () => {
     modal.classList.remove("active");
+    isEditMode = false;
+    editTask = null;
 });
 
+// Add / Update task
 addTaskButton.addEventListener("click", () => {
     const taskTitle = document.querySelector("#task-title-input").value.trim();
     const taskDesc = document.querySelector("#task-desc-input").value.trim();
 
     if (taskTitle === "" || taskDesc === "") {
-        alert("Please fill out both fields!")
+        alert("Please fill out both fields!");
         return;
     }
 
-    addTask(taskTitle, taskDesc, todo);
+    if (isEditMode && editTask) {
+        editTask.querySelector("h2").innerText = taskTitle;
+        editTask.querySelector("p").innerText = taskDesc;
+        isEditMode = false;
+        editTask = null;
+    } else {
+        addTask(taskTitle, taskDesc, todo);
+    }
+
     updateTaskCount();
     modal.classList.remove("active");
 
     document.querySelector("#task-title-input").value = "";
     document.querySelector("#task-desc-input").value = "";
-
 });
-
-// Modal releted logic

@@ -18,7 +18,7 @@ body {
     --bg-color: #000000;
     --bg-task-color: #2a2a2a;
     --bg-button-color: #1a1a1a;
-    --primary-text-color: #f4f4f4;
+    --primary-text-color: #ececec;
     --delete-color: #ff4d4d;
 
     /* padding variable */
@@ -62,7 +62,7 @@ nav {
 }
 
 nav .left {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 nav .right button {
@@ -132,20 +132,36 @@ section .task-column .task {
     cursor: grab;
 }
 
-section .task-column .task button {
+section .task-column .task .actions {
+    display: flex;
+    gap: 0.2rem;
     align-self: flex-end;
-    cursor: pointer;
+
+}
+
+section .task-column .task .actions button {
+    background-color: rgba(33, 33, 33, 0.723);
+    border: 1px solid red;
     padding: 0.2rem var(--padding-s);
     border-radius: var(--border-radius-s);
+    color: var(--primary-text-color);
+    cursor: pointer;
     border: none;
     outline: none;
-    background-color: rgba(33, 33, 33, 0.723);
-    color: var(--primary-text-color);
-    border: 1px solid rgba(255, 255, 255, 0.145);
-    i{
+
+    i {
         font-size: 0.8rem;
-        color: var(--delete-color);
     }
+
+}
+
+section .task-column .task .actions .edit {
+    border: 1px solid rgba(255, 255, 255, 0.151);
+}
+
+section .task-column .task .actions .delete {
+    border: 1px solid rgba(253, 0, 0, 0.151);
+    color: var(--delete-color);
 }
 
 .modal {
