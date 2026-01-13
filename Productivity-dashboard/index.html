@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/6820/6820955.png" type="image/x-icon">
     <title>Productivity Dashboard</title>
     <link rel="stylesheet" href="./style.css">
@@ -41,27 +41,44 @@
             </div>
         </section>
 
-        <section class="fullElem">
+        <section class="fullElem todo-list-fullpage">
             <button class="back" id="0">Close</button>
-            <h1>To do Page</h1>
+            <h2>Your Personalised Task List</h2>
+
+            <div class="todo-container">
+                <div class="addTask">
+                    <form>
+                        <input id="taskInput" type="text" placeholder="Enter Task">
+                        <textarea placeholder="Enter Details"></textarea>
+                        <div class="mark-imp">
+                            <input id="check" type="checkbox" id="check">
+                            <label for="check">Mark as Important!</label>
+                        </div>
+                        <button>Add Task</button>
+                    </form>
+                </div>
+                <div class="allTask">
+                    
+                </div>
+            </div>
         </section>
 
-        <section class="fullElem">
+        <section class="fullElem daily-planner-fullpage">
             <button class="back" id="1">Close</button>
             <h1>Daily Planner</h1>
         </section>
 
-        <section class="fullElem">
+        <section class="fullElem motivational-fullpage">
             <button class="back" id="2">Close</button>
             <h1>Motivational Quote</h1>
         </section>
 
-        <section class="fullElem">
+        <section class="fullElem pomodoro-fullpage">
             <button class="back" id="3">Close</button>
             <h1>Pomodoro Timer</h1>
         </section>
 
-        <section class="fullElem">
+        <section class="fullElem daily-goals-fullpage">
             <button class="back" id="4">Close</button>
             <h1>Daily Goals</h1>
         </section>
