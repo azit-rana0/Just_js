@@ -1,12 +1,43 @@
+:root {
+    --pri:#f8f4e1;
+    --sec: #4e1f00;
+    --tri-1: #feba17;
+    --tri-2: #74512d;
+}
+
+@font-face {
+    font-family: aeonik;
+    font-weight: 200;
+    src: url(./fonts/aeoniktrial-light.otf);
+}
+
+@font-face {
+    font-family: aeonik;
+    font-weight: 500;
+    src: url(./fonts/aeoniktrial-regular.otf);
+}
+
+@font-face {
+    font-family: aeonik;
+    font-weight: 700;
+    src: url(./fonts/aeoniktrial-bold.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
 }
 
 html,
 body {
     width: 100%;
     height: 100%;
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--sec);
 }
