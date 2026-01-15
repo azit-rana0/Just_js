@@ -125,7 +125,6 @@ section.fullElem {
 }
 
 /* todo list */
-
 .todo-list-fullpage h2 {
     font-size: 40px;
     font-weight: 500;
@@ -234,13 +233,39 @@ section.fullElem {
     border-radius: 10px;
 }
 
-.allTask .task h5 {
+.allTask .task .task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.allTask .task .task-details h5 {
     color: var(--sec);
     font-size: 23px;
     font-weight: 700;
     display: flex;
     align-items: flex-start;
     gap: 5px;
+}
+
+.allTask .task .task-details details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.allTask .task .task-details details summary {
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--tri-2);
+}
+
+.allTask .task .task-details details p {
+    font-weight: 500;
+    cursor: default;
+    color: var(--tri-2);
+    padding-left: 20px;
+    font-size: 14px;
 }
 
 .allTask .task span {

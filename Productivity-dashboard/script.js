@@ -32,13 +32,18 @@ function todoList() {
         let sum = "";
 
         currentTask.forEach((elem, idx) => {
-            sum +=
-                `
-        <div class="task">
-        <h5>${elem.task} <span class=${elem.imp}>imp</span></h5>
-        <button id=${idx}>Mark as Completed</button>
-        </div>
-        `
+            sum += `
+                <div class="task">
+                    <div class="task-details">
+                        <h5>${elem.task} <span class=${elem.imp}>imp</span></h5>
+                        <details>
+                            <summary>Click to view more details:</summary>
+                            <p>${elem.details}</p>
+                        </details>
+                    </div>
+                    <button id=${idx}>Mark as Completed</button>
+                </div>
+            `
         });
 
         allTask.innerHTML = sum;
@@ -128,5 +133,4 @@ function dailyPlanner() {
         });
     });
 }
-
 dailyPlanner();
