@@ -23,13 +23,7 @@ function todoList() {
     let taskDetailsInput = document.querySelector(".addTask form textarea");
     let taskCheckbox = document.querySelector(".addTask form #check");
 
-    let currentTask = [];
-
-    if (localStorage.getItem("currentTask")) {
-        currentTask = JSON.parse(localStorage.getItem("currentTask"));
-    } else {
-        console.log("Task list is Empty!");
-    }
+    let currentTask = JSON.parse(localStorage.getItem("currentTask")) || [];
 
     function renderTask() {
 
@@ -81,3 +75,58 @@ function todoList() {
     });
 }
 todoList();
+
+
+function dailyPlanner() {
+    let dayPlanner = document.querySelector(".day-planner");
+
+    // today's date (YYYY-MM-DD)
+    const today = new Date().toISOString().split("T")[0];
+    console.log(today);
+
+    let storedData = JSON.parse(localStorage.getItem("dayPlanData"));
+    console.log(storedData);
+    let dayPlanData = {};
+
+    // Date check (midnight expiry)
+    if (storedData) {
+        if (storedData.date !== today) {
+            localStorage.removeItem("dayPlanData");
+            dayPlanData = {};
+        } else {
+            dayPlanData = storedData.data || {};
+        }
+    }
+
+    let hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`);
+
+    let wholeDaySum = "";
+    hours.forEach((elem, idx) => {
+        let savedData = dayPlanData[idx] || "";
+        wholeDaySum += `
+        <div class="day-planner-time">
+            <p>${elem}</p>
+            <input id="${idx}" type="text" placeholder="..." value="${savedData}">
+        </div>`;
+    });
+
+    dayPlanner.innerHTML = wholeDaySum;
+
+    let dayPlannerInput = document.querySelectorAll(".day-planner input");
+    dayPlannerInput.forEach((elem) => {
+        elem.addEventListener("input", () => {
+            dayPlanData[elem.id] = elem.value;
+
+            // save with date
+            localStorage.setItem(
+                "dayPlanData",
+                JSON.stringify({
+                    data: dayPlanData,
+                    date: today
+                })
+            );
+        });
+    });
+}
+
+dailyPlanner();

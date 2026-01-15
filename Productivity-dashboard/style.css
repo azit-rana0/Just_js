@@ -96,7 +96,6 @@ section.allElems {
     pointer-events: none;
 }
 
-
 section.fullElem {
     height: 100%;
     width: 100%;
@@ -125,12 +124,11 @@ section.fullElem {
     scale: 0.95;
 }
 
-.fullElem.todo-list-fullpage {
-    display: block;
-}
+/* todo list */
 
 .todo-list-fullpage h2 {
     font-size: 40px;
+    font-weight: 500;
 }
 
 .todo-list-fullpage .todo-container {
@@ -274,4 +272,52 @@ section.fullElem {
 
 .allTask .task button:active {
     scale: 0.97;
+}
+
+/* daily planner */
+.daily-planner-fullpage h2 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.daily-planner-fullpage .day-planner {
+    background-color: var(--tri-2);
+    height: 85%;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+.daily-planner-fullpage .day-planner .day-planner-time {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.day-planner .day-planner-time p {
+    position: absolute;
+    top: 11%;
+    left: 2%;
+    font-size: 13px;
+    color: var(--tri-1);
+    font-weight: 200;
+}
+
+.day-planner .day-planner-time input {
+    padding: 15px 30px;
+    width: 100%;
+    background-color: var(--sec);
+    border-radius: 5px;
+    border: none;
+    font-size: 25px;
+    padding-top: 25px;
+    outline: none;
 }
