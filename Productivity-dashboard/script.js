@@ -87,10 +87,8 @@ function dailyPlanner() {
 
     // today's date (YYYY-MM-DD)
     const today = new Date().toISOString().split("T")[0];
-    console.log(today);
 
     let storedData = JSON.parse(localStorage.getItem("dayPlanData"));
-    console.log(storedData);
     let dayPlanData = {};
 
     // Date check (midnight expiry)
@@ -134,3 +132,19 @@ function dailyPlanner() {
     });
 }
 dailyPlanner();
+
+function motivationalQuote() {
+    let motivationQuoteContent = document.querySelector(".motivation-2 h1");
+    let motivationAuthor = document.querySelector(".motivation-3 h2");
+
+    async function fetchQuote() {
+        let response = await fetch("https://api.quotable.io/random");
+        let data = await response.json();
+
+        motivationQuoteContent.innerHTML = data.content;
+        motivationAuthor.innerHTML = `—  ${data.author}`;
+    }
+
+    fetchQuote()
+}
+motivationalQuote()
