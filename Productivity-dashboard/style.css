@@ -346,3 +346,92 @@ section.fullElem {
     padding-top: 25px;
     outline: none;
 }
+
+/* motivational */
+.fullElem.motivational-fullpage {
+    display: block;
+    position: relative;
+}
+
+.motivational-fullpage .motivation-container {
+    height: 600px;
+    width: 70%;
+    position: absolute;
+    border-radius: 30px;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.motivational-fullpage .motivation-container::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--tri-1);
+    border-radius: 50px;
+    scale: 1.15;
+    filter: blur(150px);
+    z-index: 8;
+}
+
+.motivational-fullpage .motivation-container .motivation-wrapper {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    background-color: var(--tri-1);
+    border-radius: 30px;
+    padding: 17px;
+}
+
+.motivational-fullpage .motivation-container .motivation-wrapper img {
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    opacity: 0.2;
+    width: 110px;
+}
+
+.motivation-container .motivation-wrapper .motivation-1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.motivation-container .motivation-wrapper .motivation-1 h2 {
+    background-color: var(--tri-2);
+    padding: 15px 30px;
+    border-radius: 16px;
+    font-size: 30px;
+    width: fit-content;
+    font-weight: 500;
+    text-align: right;
+}
+
+.motivation-container .motivation-wrapper .motivation-2 {
+    padding: 30px 50px;
+    margin: 25px 0;
+
+}
+
+.motivation-container .motivation-wrapper .motivation-2 h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--sec);
+}
+
+.motivation-container .motivation-wrapper .motivation-3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.motivation-container .motivation-wrapper .motivation-3 h2 {
+    background-color: var(--tri-2);
+    padding: 15px 30px;
+    border-radius: 16px;
+    font-size: 30px;
+    width: fit-content;
+    font-weight: 500;
+    text-align: right;
+}
