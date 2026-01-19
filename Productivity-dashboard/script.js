@@ -133,14 +133,15 @@ function dailyPlanner() {
 dailyPlanner();
 
 function motivationalQuote() {
-    let motivationQuoteContent = document.querySelector(".motivation-2 h1");
+    let motivationQuote = document.querySelector(".motivation-2 h1");
     let motivationAuthor = document.querySelector(".motivation-3 h2");
 
     async function fetchQuote() {
-        let response = await fetch("https://api.quotable.io/random");
+        let response = await fetch("https://dummyjson.com/quotes/random");
         let data = await response.json();
+        console.log(data);
 
-        motivationQuoteContent.innerHTML = data.content;
+        motivationQuote.innerHTML = data.quote;
         motivationAuthor.innerHTML = `—  ${data.author}`;
     }
 
