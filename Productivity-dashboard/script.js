@@ -139,7 +139,6 @@ function motivationalQuote() {
     async function fetchQuote() {
         let response = await fetch("https://dummyjson.com/quotes/random");
         let data = await response.json();
-        console.log(data);
 
         motivationQuote.innerHTML = data.quote;
         motivationAuthor.innerHTML = `—  ${data.author}`;
@@ -218,3 +217,41 @@ function pomodoroTimer() {
     resetBtn.addEventListener("click", resetTimer);
 }
 pomodoroTimer();
+
+let header1Time = document.querySelector(".header1 h1");
+let header1Date = document.querySelector(".header1 h2");
+let header1City = document.querySelector(".header1 h4");
+
+
+let city = "Mumbai";
+let dat = null;
+async function weatherAPICall(city) {
+    let apiKey = "ac71385a89e34227913101131262001";
+    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+    let data = await response.json()
+    console.log(data.current.temp_c)
+}
+// weatherAPICall("vasai")
+
+function timeDate() {
+    let now = new Date();
+    const dayOfWeek = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const monthName = now.toLocaleDateString('en-US', { month: 'long' });
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;  // 0→12, 13→1, etc.
+    header1Time.innerHTML = ` ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${period}`;
+
+    const day = now.getDate();
+    const month = now.getMonth();
+    const year = now.getFullYear();
+    header1Date.innerHTML = `${dayOfWeek}, ${day.toString().padStart(2, '0')} ${monthName} ${year.toString().padStart(4, '0')}`
+
+
+}
+timeDate()
+
+// header1City.innerHTML = `Mumbai`;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma-Style Design Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="toolbar">
+        <button id="add-rectangle">Rectangle</button>
+        <button id="add-text">Text</button>
+        <button id="clear-all">Clear All</button>
+        <button id="save-design">Save</button>
+        <button id="export-json">JSON</button>
+        <button id="export-html">HTML</button>
+    </div>
+
+    <div id="canvas"></div>
+
+    <div id="properties">
+        <h3>Properties</h3>
+        <label>X: <input type="number" id="prop-x" min="0"></label>
+        <label>Y: <input type="number" id="prop-y" min="0"></label>
+        <label>Width: <input type="number" id="prop-width" min="20"></label>
+        <label>Height: <input type="number" id="prop-height" min="20"></label>
+        <label>Rotation: <input type="range" id="prop-rotate" min="0" max="360" value="0"></label>
+        <label>Color: <input type="color" id="prop-color" value="#4f46e5"></label>
+        <label>Text: <input type="text" id="prop-text" placeholder="Enter text..."></label>
+    </div>
+
+    <div id="layers">
+        <h4>📚 Layers (<span id="layer-count">0</span>)</h4>
+        <div id="layers-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
