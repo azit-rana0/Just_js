@@ -6,6 +6,7 @@
     --red: #ff0000;
     --green: #13aa32;
     --blue: rgb(4, 113, 255);
+    --black: black;
 }
 
 @font-face {
@@ -41,16 +42,60 @@ body {
 }
 
 #main {
-    height: 100%;
+    height: 120%;
     width: 100%;
     background-color: var(--sec);
+    padding-top: 70px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    height: 60px;
+    width: 100%;
+    padding: 25px 40px 40px 40px;
+    user-select: none;
+}
+
+nav .nav-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--tri-2);
+    padding: 12px 25px;
+    border-radius: 10px;
+}
+
+nav .nav-in h2 {
+    font-size: 26px;
+    user-select: none;
+}
+
+nav .nav-in .theme {
+    background-color: var(--pri);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+nav .nav-in .theme h4 {
+    color: var(--sec);
+    font-weight: 700;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+nav .nav-in .theme:active {
+    scale: 0.95;
 }
 
 section.allElems {
     height: 100%;
     width: 100%;
     padding: 40px;
-    overflow: auto;
+    /* overflow: auto; */
     position: absolute;
     user-select: none;
 }
@@ -61,15 +106,16 @@ section.allElems {
     background-image: url(https://images.unsplash.com/photo-1714860593796-d00245cb7cd0?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-size: cover;
     background-position: top;
+    background-repeat: no-repeat;
     opacity: 0.9;
     border-radius: 15px;
     margin-bottom: 30px;
     color: var(--tri-1);
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
 }
 
 .allElems header:hover {
-    transform: scale(1.02);
+    transform: scale(1.015);
 }
 
 header .header-wrapper {
@@ -122,14 +168,14 @@ header .header-wrapper {
 .header-wrapper .header2 h3 {
     font-size: 15px;
     font-weight: 200;
-    opacity: 0.8;
+    opacity: 0.9;
     margin-bottom: 5px;
     letter-spacing: 1.5px;
 }
 
 .header-wrapper .header2 h4 {
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 200;
     margin-bottom: 40px;
 }
 
@@ -189,6 +235,8 @@ section.fullElem {
     padding: 40px;
     display: none;
     position: absolute;
+    top: 0;
+    z-index: 999;
     user-select: none;
 }
 
@@ -434,9 +482,6 @@ section.fullElem {
 }
 
 /* motivational Quote */
-.motivational-fullpage {
-    position: relative;
-}
 
 .motivational-fullpage .motivation-fullPage-container {
     width: 100%;
@@ -525,9 +570,6 @@ section.fullElem {
 }
 
 /* pomodoro timer */
-.fullElem.pomodoro-fullpage {
-    position: relative;
-}
 
 .pomodoro-fullpage h2 {
     font-size: 40px;
@@ -563,13 +605,13 @@ section.fullElem {
     margin: 10px;
     border-radius: 5px;
     border: none;
-    box-shadow: 7px 7px 0 black;
+    box-shadow: 7px 7px 0 var(--black);
     transition: all ease 0.1s;
     cursor: pointer;
     font-weight: 700;
 }
 
 .pomo-timer button:active {
-    box-shadow: 0px 0px 0px black;
+    box-shadow: 0px 0px 0px var(--black);
     scale: 0.99;
 }

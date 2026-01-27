@@ -218,44 +218,82 @@ function pomodoroTimer() {
 }
 pomodoroTimer();
 
-let header1Time = document.querySelector(".header1 h1");
-let header1Date = document.querySelector(".header1 h2");
-let header1City = document.querySelector(".header1 h4");
-let header2Temp = document.querySelector(".header2 h2");
+function weatherFunctionality() {
+    let header1Time = document.querySelector(".header1 h1");
+    let header1Date = document.querySelector(".header1 h2");
+    let header1City = document.querySelector(".header1 h4");
+    let header2Temp = document.querySelector(".header2 h2");
+    let header2Condition = document.querySelector(".header2 h4");
+    let precipitation = document.querySelector(".header2 .precipitation");
+    let humidity = document.querySelector(".header2 .humidity");
+    let wind = document.querySelector(".header2 .wind");
 
-console.log(header2Temp);
+    async function weatherAPICall(city) {
+        let apiKey = "ac71385a89e34227913101131262001";
+        let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+        let data = await response.json()
+        console.log(data.current)
+        header2Temp.innerHTML = `${data.current.temp_c}`
+        header2Condition.innerHTML = `${data.current.condition.text}`
+        precipitation.innerHTML = `Wind Direction: ${data.current.wind_dir}`
+        humidity.innerHTML = `Humidity: ${data.current.humidity}%`
+        wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
 
+    }
+    weatherAPICall("mumbai")
 
-let city = "jharkhand";
-let dat = null;
-async function weatherAPICall(city) {
-    let apiKey = "ac71385a89e34227913101131262001";
-    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-    let data = await response.json()
-    console.log(data.current.temp_c)
-    header2Temp.innerHTML = `${data.current.temp_c}`
+    function timeDate() {
+        let now = new Date();
+        const dayOfWeek = now.toLocaleDateString('en-US', { weekday: 'long' });
+        const monthName = now.toLocaleDateString('en-US', { month: 'long' });
+
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const period = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;  // 0→12, 13→1, etc.
+        header1Time.innerHTML = ` ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${period}`;
+
+        const day = now.getDate();
+        const month = now.getMonth();
+        const year = now.getFullYear();
+        header1Date.innerHTML = `${dayOfWeek}, ${day.toString().padStart(2, '0')} ${monthName} ${year.toString().padStart(4, '0')}`
+    }
+    setInterval(() => {
+        timeDate()
+    }, 1000);
 }
-weatherAPICall("jharkhand")
 
-function timeDate() {
-    let now = new Date();
-    const dayOfWeek = now.toLocaleDateString('en-US', { weekday: 'long' });
-    const monthName = now.toLocaleDateString('en-US', { month: 'long' });
+weatherFunctionality()
 
-    let hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    const period = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12;  // 0→12, 13→1, etc.
-    header1Time.innerHTML = ` ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${period}`;
+function changeTheme() {
+    let theme = document.querySelector(".theme")
+    let rootElement = document.documentElement
+    let flag = 0
+    theme.addEventListener("click", () => {
+        if (flag == 0) {
+            rootElement.style.setProperty('--pri', '#f8f4e1')
+            rootElement.style.setProperty('--sec', '#222831')
+            rootElement.style.setProperty('--tri-1', '#948972')
+            rootElement.style.setProperty('--tri-2', '#393e42')
+            flag = 1
+        } else if (flag == 1) {
+            rootElement.style.setProperty('--pri', '#f8f4e1')
+            rootElement.style.setProperty('--sec', '#030303')
+            rootElement.style.setProperty('--tri-1', '#d4c9be')
+            rootElement.style.setProperty('--tri-2', '#123458')
+            flag = 2
+        } else if (flag = 2) {
+            rootElement.style.setProperty('--pri', '#f8f4e1')
+            rootElement.style.setProperty('--sec', '#381c0a')
+            rootElement.style.setProperty('--tri-1', '#feba17')
+            rootElement.style.setProperty('--tri-2', '#74512d')
+            flag = 0
+        }
 
-    const day = now.getDate();
-    const month = now.getMonth();
-    const year = now.getFullYear();
-    header1Date.innerHTML = `${dayOfWeek}, ${day.toString().padStart(2, '0')} ${monthName} ${year.toString().padStart(4, '0')}`
+    })
 }
-setInterval(() => {
-    timeDate()
-}, 1000);
 
-// header1City.innerHTML = `Mumbai`;
+changeTheme()
+
+
