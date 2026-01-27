@@ -103,13 +103,24 @@ header .header-wrapper {
     font-weight: 500;
 }
 
-.header-wrapper .header2 h2 {
-    font-size: 50px;
-    font-weight: 700;
+.header-wrapper .header2 div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-wrapper .header2 div h2 {
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.header-wrapper .header2 p {
+    font-weight: 200;
+    font-size: 20px;
+    margin-top: 0.5rem;
 }
 
 .header-wrapper .header2 h3 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 200;
     opacity: 0.8;
     margin-bottom: 5px;
@@ -117,7 +128,7 @@ header .header-wrapper {
 }
 
 .header-wrapper .header2 h4 {
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 500;
     margin-bottom: 40px;
 }
@@ -144,9 +155,9 @@ header .header-wrapper {
     transform: translateY(-15%) scale(1.05);
 }
 
-.allFeatures .elem:hover + .elem,
+.allFeatures .elem:hover+.elem,
 .allFeatures .elem:has(+ .elem:hover) {
-transform: translateY(-7%) scale(0.97);
+    transform: translateY(-7%) scale(0.97);
 }
 
 .allFeatures .elem:active {

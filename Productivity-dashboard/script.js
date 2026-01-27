@@ -221,17 +221,21 @@ pomodoroTimer();
 let header1Time = document.querySelector(".header1 h1");
 let header1Date = document.querySelector(".header1 h2");
 let header1City = document.querySelector(".header1 h4");
+let header2Temp = document.querySelector(".header2 h2");
+
+console.log(header2Temp);
 
 
-let city = "Mumbai";
+let city = "jharkhand";
 let dat = null;
 async function weatherAPICall(city) {
     let apiKey = "ac71385a89e34227913101131262001";
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
     let data = await response.json()
     console.log(data.current.temp_c)
+    header2Temp.innerHTML = `${data.current.temp_c}`
 }
-// weatherAPICall("vasai")
+weatherAPICall("jharkhand")
 
 function timeDate() {
     let now = new Date();
@@ -249,9 +253,9 @@ function timeDate() {
     const month = now.getMonth();
     const year = now.getFullYear();
     header1Date.innerHTML = `${dayOfWeek}, ${day.toString().padStart(2, '0')} ${monthName} ${year.toString().padStart(4, '0')}`
-
-
 }
-timeDate()
+setInterval(() => {
+    timeDate()
+}, 1000);
 
 // header1City.innerHTML = `Mumbai`;
