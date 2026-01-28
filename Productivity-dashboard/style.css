@@ -27,6 +27,22 @@
     src: url(./fonts/aeoniktrial-bold.otf);
 }
 
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderAnimate {
+    from {
+        --rotate: 0deg;
+    }
+
+    to {
+        --rotate: 360deg;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -42,168 +58,234 @@ body {
 }
 
 #main {
-    height: 120%;
+    height: 100%;
     width: 100%;
     background-color: var(--sec);
-    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    height: 60px;
+    height: 10%;
     width: 100%;
-    padding: 25px 40px 40px 40px;
     user-select: none;
-}
 
-nav .nav-in {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--tri-2);
-    padding: 12px 25px;
-    border-radius: 10px;
-}
+    .nav-in {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--tri-2);
+        padding: 0px 30px;
 
-nav .nav-in h2 {
-    font-size: 26px;
-    user-select: none;
-}
+        h2 {
+            font-size: 26px;
+            user-select: none;
 
-nav .nav-in .theme {
-    background-color: var(--pri);
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
+            span {
+                font-weight: 700;
+                font-size: 20px;
+                font-family: monospace;
+                color: var(--sec);
+            }
+        }
 
-nav .nav-in .theme h4 {
-    color: var(--sec);
-    font-weight: 700;
-    font-size: 14px;
-    pointer-events: none;
-}
+        .inputContainer {
+            width: 40%;
 
-nav .nav-in .theme:active {
-    scale: 0.95;
+            input {
+                width: 100%;
+                padding: 9px 25px;
+                font-size: 18px;
+                background: var(--pri);
+                color: var(--sec);
+                border-radius: 30px;
+                border: none;
+                outline: none;
+            }
+        }
+
+        .theme {
+            background-color: var(--pri);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:active {
+                scale: 0.97;
+            }
+
+            h4 {
+                color: var(--sec);
+                font-weight: 700;
+                font-size: 15px;
+                pointer-events: none;
+            }
+
+        }
+    }
 }
 
 section.allElems {
-    height: 100%;
+    height: 90%;
     width: 100%;
-    padding: 40px;
-    /* overflow: auto; */
-    position: absolute;
+    padding: 18px;
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
 .allElems header {
-    height: 400px;
+    height: 60%;
     width: 100%;
-    background-image: url(https://images.unsplash.com/photo-1714860593796-d00245cb7cd0?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    opacity: 0.9;
+
     border-radius: 15px;
-    margin-bottom: 30px;
     color: var(--tri-1);
-    transition: all 0.7s ease;
+    background:
+        conic-gradient(from var(--rotate), #0000003b, var(--pri), #0000003b, #0000003b) border-box;
+    border: 3px solid rgb(112, 112, 112);
+    animation: borderAnimate 4s infinite;
+    animation-play-state: paused;
+    transition: all 0.5s linear;
+    position: relative;
+    overflow: hidden;
 }
 
 .allElems header:hover {
-    transform: scale(1.015);
+    transform: scale(1);
+    animation-play-state: running;
+    border: 5px solid transparent;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.341);
 }
 
-header .header-wrapper {
+header .img-container {
     width: 100%;
     height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        opacity: 0.7;
+        filter: blur(1px);
+    }
+}
+
+header .info-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-inline: 70px;
-    background-color: rgba(0, 0, 0, 0.335);
-    backdrop-filter: blur(2px);
-    border-radius: 15px;
-
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    
 }
 
-.header-wrapper .header1 h2 {
+.header1 h2 {
     font-size: 30px;
     font-weight: 500;
-    color: var(--pri);
 }
 
-.header-wrapper .header1 h1 {
+header .header1 h1 {
     font-size: 80px;
     font-weight: 700;
     margin-bottom: 50px;
-    color: var(--pri);
 }
 
-.header-wrapper .header1 h4 {
+header .header1 h4 {
     font-size: 50px;
     font-weight: 500;
 }
 
-.header-wrapper .header2 div {
+header .header2 div {
     display: flex;
     gap: 0.5rem;
 }
 
-.header-wrapper .header2 div h2 {
+header .header2 div h2 {
     font-size: 55px;
     font-weight: 500;
 }
 
-.header-wrapper .header2 p {
+header .header2 p {
     font-weight: 200;
     font-size: 20px;
     margin-top: 0.5rem;
 }
 
-.header-wrapper .header2 h3 {
+header .header2 h3 {
     font-size: 15px;
-    font-weight: 200;
+    font-weight: 500;
     opacity: 0.9;
     margin-bottom: 5px;
     letter-spacing: 1.5px;
 }
 
-.header-wrapper .header2 h4 {
+header .header2 h4 {
     font-size: 30px;
     font-weight: 200;
     margin-bottom: 40px;
 }
 
 .allElems .allFeatures {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 20px;
+    width: 100%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
 }
 
 .allFeatures .elem {
     cursor: pointer;
-    height: 330px;
-    width: 272px;
     border-radius: 10px;
-    overflow: hidden;
+    color: var(--tri-1);
+    background:
+        conic-gradient(from var(--rotate), #0000003b, var(--pri), #0000003b, #0000003b) border-box;
+    border: 2px solid rgb(112, 112, 112);
+    animation: borderAnimate 4s infinite;
+    animation-play-state: paused;
+    transition: all 0.5s linear;
     position: relative;
-    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .allFeatures .elem:hover {
-    transform: translateY(-15%) scale(1.05);
+    transform: translateY(-0.5rem) scale(1.03);
+    animation-play-state: running;
+    border: 3px solid transparent;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.341);
 }
 
 .allFeatures .elem:hover+.elem,
 .allFeatures .elem:has(+ .elem:hover) {
-    transform: translateY(-7%) scale(0.97);
+    transform: translateY(0.6rem) scale(0.97);
+}
+
+.allFeatures .elem .img-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+}
+
+.allFeatures .elem .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    filter: blur(1px);
 }
 
 .allFeatures .elem:active {
@@ -211,21 +293,16 @@ header .header-wrapper {
     transition: all 0.2 ease;
 }
 
-.allFeatures .elem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-}
-
 .allFeatures .elem h2 {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 500;
     position: absolute;
     bottom: 4%;
     right: 5%;
     pointer-events: none;
+    font-family: monospace;
+    letter-spacing: -1px;
+    word-spacing: -2px;
 }
 
 section.fullElem {
@@ -513,10 +590,22 @@ section.fullElem {
     z-index: 10;
     position: absolute;
     width: 100%;
-    background-color: var(--tri-1);
     border-radius: 30px;
     padding: 20px;
-    border: 5px solid var(--tri-2);
+
+    background:
+        linear-gradient(var(--tri-1)) padding-box,
+        conic-gradient(from var(--rotate), #00000003, var(--sec), #00000003, #00000003) border-box;
+    border: 3px solid var(--sec);
+    animation: borderAnimate 2s infinite;
+    animation-play-state: paused;
+    transition: all 0.5s linear;
+    overflow: hidden;
+}
+
+.motivation-container .motivation-wrapper:hover {
+    animation-play-state: running;
+    border: 6px solid transparent;
 }
 
 .motivation-container .motivation-wrapper img {
