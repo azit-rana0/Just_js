@@ -223,24 +223,73 @@ function weatherFunctionality() {
     let header1Date = document.querySelector(".header1 h2");
     let header1City = document.querySelector(".header1 h4");
     let header2Temp = document.querySelector(".header2 h2");
+    let header2C = document.querySelector(".header2 p");
     let header2Condition = document.querySelector(".header2 h4");
     let precipitation = document.querySelector(".header2 .precipitation");
     let humidity = document.querySelector(".header2 .humidity");
     let wind = document.querySelector(".header2 .wind");
+    let citySearchBtn = document.querySelector("#btn");
+    let cityInputBox = document.querySelector("#cityInput");
 
-    async function weatherAPICall(city) {
+    async function weatherAPICall(cityInput = "Jharkhand") {
         let apiKey = "ac71385a89e34227913101131262001";
-        let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-        let data = await response.json()
-        console.log(data.current)
-        header2Temp.innerHTML = `${data.current.temp_c}`
-        header2Condition.innerHTML = `${data.current.condition.text}`
-        precipitation.innerHTML = `Wind Direction: ${data.current.wind_dir}`
-        humidity.innerHTML = `Humidity: ${data.current.humidity}%`
-        wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
 
+        try {
+            let response = await fetch(
+                `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}`
+            );
+
+            let data = await response.json();
+
+            if (data.error) {
+                alert("❌ City nahi mili, spelling check karo bhai");
+                return;
+            }
+
+            header1City.innerText = data.location.name;
+            header2Temp.innerText = `${data.current.temp_c}`;
+            header2C.innerHTML = `${"°C"}`
+            header2Condition.innerText = data.current.condition.text;
+            precipitation.innerText = `Wind Direction: ${data.current.wind_dir}`;
+            humidity.innerText = `Humidity: ${data.current.humidity}%`;
+            wind.innerText = `Wind: ${data.current.wind_kph} km/h`;
+
+        } catch (error) {
+            alert("⚠️ Network issue, internet check karo");
+            console.error(error);
+        }
     }
-    weatherAPICall("mumbai")
+
+    citySearchBtn.addEventListener("click", () => {
+        let cityInput = cityInputBox.value.trim();
+        if (cityInput === "") {
+            alert("Bhai city ka naam likh 😅");
+            return;
+        }
+        weatherAPICall(cityInput);
+    });
+
+    cityInputBox.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            citySearchBtn.click();
+        }
+    });
+
+    function updateImageByTime() {
+        let hour = new Date().getHours(); // 0–23
+        let weatherImg = document.querySelector("#weatherImg");
+
+        if (hour >= 5 && hour < 12) {
+            weatherImg.src = "https://i.pinimg.com/1200x/7a/76/1d/7a761d0c69df3858fceff11ef8708f48.jpg";
+        }
+        else if (hour >= 12 && hour < 18) {
+            weatherImg.src = "https://i.pinimg.com/1200x/ee/14/5d/ee145df6c77b827301f52828dc7a7c3c.jpg";
+        }
+        else {
+            weatherImg.src = "https://i.pinimg.com/736x/6a/a7/cb/6aa7cb8fc79d333734460e387188f2ab.jpg";
+        }
+    }
+    updateImageByTime()
 
     function timeDate() {
         let now = new Date();
@@ -265,6 +314,7 @@ function weatherFunctionality() {
 }
 
 weatherFunctionality()
+
 
 function changeTheme() {
     let theme = document.querySelector(".theme")
