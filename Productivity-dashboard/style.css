@@ -522,6 +522,7 @@ section.fullElem {
                     gap: 5px;
 
                     h5 {
+                        text-transform: capitalize;
                         color: var(--sec);
                         font-size: 23px;
                         font-weight: 700;
@@ -547,6 +548,8 @@ section.fullElem {
                             color: var(--tri-2);
                             padding-left: 20px;
                             font-size: 14px;
+                            text-transform: capitalize;
+
                         }
                     }
                 }
@@ -648,6 +651,7 @@ section.fullElem {
                 font-size: 22px;
                 padding-top: 25px;
                 outline: none;
+                text-transform: capitalize;
             }
         }
     }
@@ -802,20 +806,187 @@ section.fullElem {
 }
 
 /* daily goals */
+/* section.fullElem.daily-goals-fullpage {
+    display: block;
+} */
 
 .daily-goals-fullpage {
     .goals-container {
+        height: 100%;
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        gap: 10px;
 
-        h1 {
-            font-size: 320px;
-            color: transparent;
-            background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRsgJ7b-fvJgKPvt4hZ_iWa1qZMoqpU5unZScp2BDoFCWPPxfUbyq84IcCfw2Ph6hhuVumrArCP_CGiah-l1xE2nYLnPb5ZOT56aF60QRfAQMoi78qfVzW8izY6UzhNTC0PWJpskSbhp4/s1600/gifs-on-cli.gif);
-            -webkit-background-clip: text;
-            -webkit-text-stroke: var(--tri-1);
-            -webkit-text-stroke-width: 4px;
+        .addGoal {
+            background: var(--tri-2);
+            width: 30%;
+            height: 100%;
+            border-radius: 10px;
+
+            form {
+                height: 100%;
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px;
+                gap: 20px;
+
+                textarea {
+                    flex-grow: 1;
+                    padding: 14px 20px;
+                    width: 100%;
+                    font-size: 18px;
+                    background: var(--pri);
+                    color: var(--sec);
+                    border-radius: 8px;
+                    border: none;
+                    outline: none;
+                }
+
+                .mark-imp {
+                    flex-grow: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    width: 100%;
+
+                    #check {
+                        scale: 1.4;
+                    }
+                }
+
+                button {
+                    flex-grow: 0;
+                    cursor: pointer;
+                    padding: 14px 20px;
+                    width: 100%;
+                    font-size: 18px;
+                    background-color: var(--tri-1);
+                    color: var(--sec);
+                    font-weight: 700;
+                    border-radius: 8px;
+                    border: none;
+                    outline: none;
+                    transition: all 0.2s ease;
+
+                    &:active {
+                        scale: 0.99;
+                    }
+                }
+            }
+        }
+
+        .allGoals {
+            background: var(--tri-2);
+            width: 70%;
+            height: 100%;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(8rem, 1fr));
+            grid-auto-rows: 15rem;
+            gap: 1rem;
+            padding: 30px;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #FCFCFC;
+                border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 20px;
+                background: rgb(102, 102, 102);
+                border: 1px solid transparent;
+                background-clip: content-box;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: rgb(65, 65, 65);
+                border: 1px solid transparent;
+                background-clip: content-box;
+            }
+
+            .goal {
+                width: 100%;
+                background-image: url("https://cdn-icons-png.flaticon.com/512/9561/9561625.png");
+                background-position: center;
+                background-size: cover;
+                border-radius: 10px;
+
+                .goal-wrapper {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    backdrop-filter: blur(3px);
+                    background-color: rgba(0, 0, 0, 0.381);
+                    padding: 1rem 1rem;
+                    border-radius: 1rem;
+                    border: 1px solid rgb(190, 140, 0);
+
+                    .goal-details {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+
+                        h2 {
+                            text-transform: capitalize;
+                            color: var(--pri);
+                            font-size: 23px;
+                            font-weight: 700;
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 5px;
+                        }
+
+                    }
+
+                    span {
+                        background-color: var(--red);
+                        color: var(--pri);
+                        font-size: 0.9rem;
+                        border-top-right-radius: 1rem;
+                        padding: 0.3rem 1rem;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+
+                        &.ture {
+                            opacity: 1;
+                        }
+
+                        &.false {
+                            opacity: 0;
+                        }
+                    }
+
+                    button {
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        cursor: pointer;
+                        padding-block: 0.6rem;
+                        color: var(--pri);
+                        background-color: green;
+                        font-size: 14px;
+                        border-bottom-right-radius: 1rem;
+                        border-bottom-left-radius: 1rem;
+                        border: none;
+                        transition: all 0.3s ease;
+
+                        &:active {
+                            scale: 0.97;
+                        }
+                    }
+                }
+            }
         }
     }
 }

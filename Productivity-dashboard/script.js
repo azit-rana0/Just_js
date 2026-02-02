@@ -17,6 +17,7 @@ function openFeatures() {
 };
 openFeatures();
 
+
 function todoList() {
     let form = document.querySelector(".addTask form");
     let taskInput = document.querySelector(".addTask form #taskInput");
@@ -81,6 +82,7 @@ function todoList() {
 }
 todoList();
 
+
 function dailyPlanner() {
     let dayPlanner = document.querySelector(".day-planner");
 
@@ -132,6 +134,7 @@ function dailyPlanner() {
 }
 dailyPlanner();
 
+
 function motivationalQuote() {
     let motivationQuote = document.querySelector(".motivation-2 h1");
     let motivationAuthor = document.querySelector(".motivation-3 h2");
@@ -147,6 +150,7 @@ function motivationalQuote() {
     fetchQuote()
 }
 motivationalQuote()
+
 
 function pomodoroTimer() {
     let timer = document.querySelector(".pomo-timer h1");
@@ -217,6 +221,7 @@ function pomodoroTimer() {
     resetBtn.addEventListener("click", resetTimer);
 }
 pomodoroTimer();
+
 
 function weatherFunctionality() {
     let header1Time = document.querySelector(".header1 h1");
@@ -312,8 +317,67 @@ function weatherFunctionality() {
         timeDate()
     }, 1000);
 }
-
 weatherFunctionality()
+
+
+function dailyGoal() {
+    let form = document.querySelector(".addGoal form");
+    let goalInput = document.querySelector(".addGoal form textarea");
+    let goalCheckbox = document.querySelector(".addGoal form #check");
+
+    let currentTask = JSON.parse(localStorage.getItem("currentGoal")) || [];
+
+    function renderTask() {
+
+        let allGoals = document.querySelector(".allGoals");
+
+        let sum = "";
+
+        currentTask.forEach((elem, idx) => {
+            sum += `
+                <div class="goal">
+                    <div class="goal-wrapper">
+                        <div class="goal-details">
+                            <h2>${elem.goal} <span class=${elem.imp}>imp</span></h2> 
+                        </div>
+                        <button id=${idx}>Mark as Completed</button>
+                    </div>
+                </div>
+            `
+        });
+
+        allGoals.innerHTML = sum;
+
+        localStorage.setItem("currentGoal", JSON.stringify(currentTask));
+
+        document.querySelectorAll(".goal button").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                currentTask.splice(btn.id, 1);
+                renderTask();
+            })
+        })
+
+    }
+    renderTask()
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        currentTask.push(
+            {
+                goal: goalInput.value,
+                imp: goalCheckbox.checked
+            }
+        )
+
+        renderTask();
+
+        goalInput.value = "";
+        goalCheckbox.checked = false;
+
+    });
+}
+dailyGoal();
 
 
 function changeTheme() {
@@ -343,7 +407,6 @@ function changeTheme() {
 
     })
 }
-
 changeTheme()
 
 
