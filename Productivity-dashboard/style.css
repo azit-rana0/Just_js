@@ -159,7 +159,6 @@ section.allElems {
 .allElems header {
     height: 65%;
     width: 100%;
-
     border-radius: 15px;
     color: var(--tri-1);
     background:
@@ -197,26 +196,38 @@ section.allElems {
     }
 
     .info-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-inline: 70px;
         width: 100%;
         height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 80px;
         position: absolute;
         left: 0;
         top: 0;
 
         .header1 {
-            h2 {
-                font-size: 30px;
-                font-weight: 500;
-            }
+            height: 100%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            gap: 5rem;
 
-            h1 {
-                font-size: 80px;
-                font-weight: 700;
-                margin-bottom: 50px;
+            .data-time {
+                display: flex;
+                flex-direction: column;
+
+                h2 {
+                    font-size: 30px;
+                    font-weight: 500;
+                }
+
+                h1 {
+                    font-size: 80px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
             }
 
             h4 {
@@ -227,36 +238,56 @@ section.allElems {
         }
 
         .header2 {
-            div {
+            height: 100%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: center;
+            gap: 5rem;
+
+            .temp-container {
                 display: flex;
+                flex-direction: column;
+                align-items: end;
                 gap: 0.5rem;
 
-                h2 {
-                    font-size: 55px;
-                    font-weight: 500;
+                .temp {
+                    display: flex;
+                    gap: 0.5rem;
+
+                    h2 {
+                        font-size: 55px;
+                        font-weight: 500;
+                    }
+
+                    p {
+                        font-weight: 200;
+                        font-size: 20px;
+                        margin-top: 0.5rem;
+                    }
                 }
 
-                p {
+                h4 {
+                    font-size: 30px;
                     font-weight: 200;
-                    font-size: 20px;
-                    margin-top: 0.5rem;
                 }
-
             }
 
-            h4 {
-                font-size: 30px;
-                font-weight: 200;
-                margin-bottom: 40px;
+            .group {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: 0.5rem;
+
+                h3 {
+                    font-size: 15px;
+                    font-weight: 500;
+                    opacity: 0.9;
+                    letter-spacing: 1.5px;
+                }
             }
 
-            h3 {
-                font-size: 15px;
-                font-weight: 500;
-                opacity: 0.9;
-                margin-bottom: 5px;
-                letter-spacing: 1.5px;
-            }
         }
     }
 }
@@ -806,10 +837,6 @@ section.fullElem {
 }
 
 /* daily goals */
-/* section.fullElem.daily-goals-fullpage {
-    display: block;
-} */
-
 .daily-goals-fullpage {
     .goals-container {
         height: 100%;
@@ -986,6 +1013,324 @@ section.fullElem {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+/* started media queries */
+/* Tablets */
+@media (max-width: 992px) {
+
+    nav {
+        .nav-in {
+            h2 {
+                font-size: 20px;
+
+                span {
+                    font-size: 16px;
+                }
+            }
+
+            .inputContainer {
+                input {
+                    padding: 7px 25px;
+                    font-size: 16px;
+                }
+
+                button {
+                    padding: 7px 25px;
+                    font-size: 16px;
+                }
+            }
+
+            .theme {
+                padding: 9px 25px;
+
+                h4 {
+                    font-weight: 700;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .allElems header {
+        .info-container {
+            padding-inline: 60px;
+
+            .header1 {
+                .data-time {
+                    h2 {
+                        font-size: 25px;
+                    }
+
+                    h1 {
+                        font-size: 70px;
+                    }
+                }
+
+                h4 {
+                    font-size: 40px;
+                }
+            }
+
+            .header2 {
+
+                .temp-container {
+                    .temp {
+
+                        h2 {
+                            font-size: 45px;
+                        }
+
+                        p {
+                            font-size: 18px;
+                        }
+                    }
+
+                    h4 {
+                        font-size: 25px;
+                    }
+                }
+
+                .group {
+                    h3 {
+                        font-size: 14px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .allElems .allFeatures {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+        .elem {
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+/* Small tablets / large mobiles */
+@media (max-width: 768px) {
+    nav {
+        .nav-in {
+            padding: 0px 20px;
+
+            h2 {
+                font-size: 18px;
+
+                span {
+                    font-size: 14px;
+                }
+            }
+
+            .inputContainer {
+                input {
+                    padding: 7px 25px;
+                    font-size: 14px;
+                }
+
+                button {
+                    padding: 7px 25px;
+                    font-size: 14px;
+                }
+            }
+
+            .theme {
+                padding: 9px 25px;
+
+                h4 {
+                    font-weight: 700;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .allElems header {
+        .info-container {
+            padding-inline: 50px;
+
+            .header1 {
+                .data-time {
+                    h2 {
+                        font-size: 23px;
+                    }
+
+                    h1 {
+                        font-size: 60px;
+                    }
+                }
+
+                h4 {
+                    font-size: 35px;
+                }
+            }
+
+            .header2 {
+
+                .temp-container {
+                    .temp {
+
+                        h2 {
+                            font-size: 40px;
+                        }
+
+                        p {
+                            font-size: 16px;
+                        }
+                    }
+
+                    h4 {
+                        font-size: 22px;
+                    }
+                }
+
+                .group {
+                    h3 {
+                        font-size: 12px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .allElems .allFeatures {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+
+        .elem {
+
+            h2 {
+                font-size: 17px;
+            }
+        }
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    nav {
+        height: 20%;
+
+        .nav-in {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 15px 20px;
+
+            h2 {
+                font-size: 20px;
+
+                span {
+                    font-size: 14px;
+                }
+            }
+
+            .inputContainer {
+                width: 90%;
+
+                input {
+                    padding: 7px 15px;
+                    font-size: 13px;
+                }
+
+                button {
+                    padding: 7px 25px;
+                    font-size: 13px;
+                    text-align: center;
+                }
+            }
+
+            .theme {
+                padding: 8px 25px;
+
+                h4 {
+                    font-weight: 700;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    .allElems header {
+        height: 50%;
+
+        .info-container {
+            padding-inline: 30px;
+
+            .header1 {
+                gap: 3rem;
+
+                .data-time {
+                    h2 {
+                        font-size: 16px;
+                    }
+
+                    h1 {
+                        font-size: 35px;
+                    }
+                }
+
+                h4 {
+                    font-size: 30px;
+                }
+            }
+
+            .header2 {
+                gap: 3rem;
+
+                .temp-container {
+                    .temp {
+
+                        h2 {
+                            font-size: 30px;
+                        }
+
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+
+                    h4 {
+                        font-size: 18px;
+                    }
+                }
+
+                .group {
+                    h3 {
+                        font-size: 10px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    section.allElems {
+        gap: 0.6rem;
+        padding: 0.8rem;
+    }
+
+    .allElems .allFeatures {
+        height: 50%;
+        grid-template-columns: repeat(3, minmax(0px, 1fr));
+        grid-template-rows: repeat(2, 130px);
+        gap: 0.5rem;
+
+        .elem {
+            border-width: 0.1rem;
+            border-radius: 0.5rem;
+
+            h2 {
+                font-size: 15px;
             }
         }
     }
