@@ -281,14 +281,17 @@ function weatherFunctionality() {
     });
 
     function updateImageByTime() {
-        let hour = new Date().getHours(); // 0–23
+        let hour = new Date().getHours();
         let weatherImg = document.querySelector("#weatherImg");
 
-        if (hour >= 5 && hour < 12) {
+        if (hour >= 5 && hour < 10) {
             weatherImg.src = "https://i.pinimg.com/1200x/7a/76/1d/7a761d0c69df3858fceff11ef8708f48.jpg";
         }
-        else if (hour >= 12 && hour < 18) {
+        else if (hour >= 10 && hour < 15) {
             weatherImg.src = "https://i.pinimg.com/1200x/ee/14/5d/ee145df6c77b827301f52828dc7a7c3c.jpg";
+        }
+        else if (hour >= 15 && hour < 18) {
+            weatherImg.src = "https://i.pinimg.com/1200x/07/45/a4/0745a4cbe78ddda25a5d5a91e6425e06.jpg";
         }
         else {
             weatherImg.src = "https://i.pinimg.com/736x/6a/a7/cb/6aa7cb8fc79d333734460e387188f2ab.jpg";
