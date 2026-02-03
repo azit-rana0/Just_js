@@ -621,9 +621,9 @@ section.fullElem {
     }
 }
 
-section.fullElem.daily-planner-fullpage {
+/* section.fullElem.daily-planner-fullpage {
     display: block;
-}
+} */
 
 /* daily planner */
 .daily-planner-fullpage {
@@ -1536,7 +1536,7 @@ section.fullElem.daily-planner-fullpage {
     .allElems .allFeatures {
         height: 50%;
         grid-template-columns: repeat(3, minmax(0px, 1fr));
-        grid-template-rows: repeat(2, 130px);
+        grid-template-rows: repeat(2,1fr);
         gap: 0.5rem;
 
         .elem {
