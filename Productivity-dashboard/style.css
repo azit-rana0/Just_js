@@ -621,10 +621,6 @@ section.fullElem {
     }
 }
 
-/* section.fullElem.daily-planner-fullpage {
-    display: block;
-} */
-
 /* daily planner */
 .daily-planner-fullpage {
 
@@ -1213,49 +1209,26 @@ section.fullElem {
 
     /* daily planner */
     .daily-planner-fullpage {
-
         .day-planner {
-            height: 100%;
-            width: 100%;
-            background-color: var(--tri-2);
-            padding: 20px;
-            border-radius: 10px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            overflow: auto;
-
-         
+            padding: 15px;
+            gap: 8px;
 
             .day-planner-time {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                position: relative;
-
                 p {
-                    position: absolute;
-                    top: 11%;
-                    left: 2%;
-                    font-size: 12px;
-                    color: var(--tri-1);
-                    font-weight: 200;
+                    top: 12%;
+                    left: 2.5%;
+                    font-size: 11px;
                 }
 
                 input {
-                    padding: 13px 25px;
-                    width: 100%;
-                    background-color: var(--sec);
-                    border-radius: 5px;
-                    border: none;
-                    font-size: 22px;
-                    padding-top: 25px;
-                    outline: none;
-                    text-transform: capitalize;
+                    padding: 10px 22px;
+                    font-size: 20px;
+                    padding-top: 21px;
                 }
             }
         }
     }
+
 }
 
 /* Small tablets / large mobiles */
@@ -1426,6 +1399,28 @@ section.fullElem {
             }
         }
     }
+
+    /* daily planner */
+    .daily-planner-fullpage {
+        .day-planner {
+            padding: 10px;
+            gap: 5px;
+
+            .day-planner-time {
+                p {
+                    top: 12.5%;
+                    left: 2.5%;
+                    font-size: 10px;
+                }
+
+                input {
+                    padding: 10px 22px;
+                    font-size: 18px;
+                    padding-top: 18px;
+                }
+            }
+        }
+    }
 }
 
 /* Mobile */
@@ -1536,7 +1531,7 @@ section.fullElem {
     .allElems .allFeatures {
         height: 50%;
         grid-template-columns: repeat(3, minmax(0px, 1fr));
-        grid-template-rows: repeat(2,1fr);
+        grid-template-rows: repeat(2, 1fr);
         gap: 0.5rem;
 
         .elem {
@@ -1671,6 +1666,30 @@ section.fullElem {
                         font-size: 12px;
                         border-radius: 5px;
                     }
+                }
+            }
+        }
+    }
+
+    /* daily planner */
+    .daily-planner-fullpage {
+        .day-planner {
+            grid-template-columns: 1fr;
+            border-radius: 5px;
+            padding: 8px;
+            gap: 5px;
+            
+            .day-planner-time {
+                p {
+                    top: 12.5%;
+                    left: 2.5%;
+                    font-size:10px;
+                }
+
+                input {
+                    padding: 5px 22px;
+                    font-size: 18px;
+                    padding-top: 20px;
                 }
             }
         }
