@@ -399,7 +399,7 @@ section.fullElem {
             .back {
                 cursor: pointer;
                 background-color: var(--red);
-                color: var(--sec);
+                color: var(--pri);
                 padding: 8px 20px;
                 padding-bottom: 9px;
                 font-size: 16px;
