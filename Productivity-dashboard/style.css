@@ -164,7 +164,7 @@ section.allElems {
     background:
         conic-gradient(from var(--rotate), #0000003b, var(--pri), #0000003b, #0000003b) border-box;
     border: 2px solid rgb(112, 112, 112);
-    animation: borderAnimate 4s infinite;
+    animation: borderAnimate 4s linear infinite;
     animation-play-state: paused;
     transition: all 0.5s linear;
     position: relative;
@@ -307,7 +307,7 @@ section.allElems {
         background:
             conic-gradient(from var(--rotate), #0000003b, var(--pri), #0000003b, #0000003b) border-box;
         border: 2px solid rgb(112, 112, 112);
-        animation: borderAnimate 4s infinite;
+        animation: borderAnimate 4s linear infinite;
         animation-play-state: paused;
         transition: all 0.5s linear;
         position: relative;
@@ -380,7 +380,6 @@ section.fullElem {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        /* border: 2px solid red; */
 
         .upper-container {
             display: flex;
@@ -389,7 +388,6 @@ section.fullElem {
             align-items: start;
             width: 100%;
             height: 10%;
-            /* border: 2px solid green; */
 
             h2 {
                 font-size: 30px;
@@ -417,7 +415,6 @@ section.fullElem {
         .bottom-container {
             height: 90%;
             width: 100%;
-            /* border: 2px solid red; */
         }
     }
 }
