@@ -236,45 +236,33 @@ function weatherFunctionality() {
     let citySearchBtn = document.querySelector("#btn");
     let cityInputBox = document.querySelector("#cityInput");
 
-    // async function weatherAPICall(cityInput = "Jharkhand") {
-    //     let apiKey = "ac71385a89e34227913101131262001";
+    async function weatherAPICall(cityInput = "Jharkhand") {
+        let apiKey = "ac71385a89e34227913101131262001";
 
-    //     try {
-    //         let response = await fetch(
-    //             `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}`
-    //         );
+        try {
+            let response = await fetch(
+                `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}`
+            );
 
-    //         let data = await response.json();
+            let data = await response.json();
 
-    //         if (data.error) {
-    //             alert("❌ City nahi mili, spelling check karo bhai");
-    //             return;
-    //         }
+            if (data.error) {
+                alert("❌ City nahi mili, spelling check karo bhai");
+                return;
+            }
 
-    //         header1City.innerText = data.location.name;
-    //         header2Temp.innerText = `${data.current.temp_c}`;
-    //         header2C.innerHTML = `${"°C"}`
-    //         header2Condition.innerText = data.current.condition.text;
-    //         precipitation.innerText = `Wind Direction: ${data.current.wind_dir}`;
-    //         humidity.innerText = `Humidity: ${data.current.humidity}%`;
-    //         wind.innerText = `Wind: ${data.current.wind_kph} km/h`;
+            header1City.innerText = data.location.name;
+            header2Temp.innerText = `${data.current.temp_c}`;
+            header2C.innerHTML = `${"°C"}`
+            header2Condition.innerText = data.current.condition.text;
+            precipitation.innerText = `Wind Direction: ${data.current.wind_dir}`;
+            humidity.innerText = `Humidity: ${data.current.humidity}%`;
+            wind.innerText = `Wind: ${data.current.wind_kph} km/h`;
 
-    //     } catch (error) {
-    //         alert("⚠️ Network issue, internet check karo");
-    //         console.error(error);
-    //     }
-    // }
-
-    async function weatherAPICall(cityInput = "Virar") {
-        const response = await fetch(`https://wttr.in/${cityInput}?format=j1`);
-        const data = await response.json();
-        const current = data.current_condition[0];
-
-        header1City.innerText = data.nearest_area[0].areaName[0].value;
-        header2Temp.innerText = `${current.temp_C}°C`;
-        header2Condition.innerText = current.weatherDesc[0].value;
-        humidity.innerText = `Humidity: ${current.humidity}%`;
-        wind.innerText = `Wind: ${current.windspeedKmph} km/h`;
+        } catch (error) {
+            alert("⚠️ Network issue, internet check karo");
+            console.error(error);
+        }
     }
 
     citySearchBtn.addEventListener("click", () => {
