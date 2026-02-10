@@ -150,7 +150,7 @@ section .task-column .task .actions button {
     border: none;
     outline: none;
 
-    i {
+    & i {
         font-size: 0.7rem;
     }
 
